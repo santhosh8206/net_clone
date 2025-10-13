@@ -1,0 +1,53 @@
+/* MovieModal.css */
+.movie-modal-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.7);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1050;
+}
+.movie-modal-container {
+width: 80%;
+max-width: 900px;
+background-color: #111;
+border-radius: 8px;
+overflow: hidden;
+animation: fadeIn 0.3s ease-in-out;
+}
+.movie-modal-close {
+position: absolute;
+top: 10px;
+right: 10px;
+z-index: 10;
+}
+.movie-modal-backdrop {
+height: 300px;
+background-size: cover;
+background-position: center;
+position: relative;
+}
+.movie-modal-gradient {
+position: absolute;
+inset: 0;
+background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+}
+.movie-modal-body {
+padding: 1.5rem;
+}
+.movie-modal-body h2 {
+margin-bottom: 0.5rem;
+}
+.movie-modal-overview {
+margin: 1rem 0;
+}
+.movie-modal-buttons .btn {
+font-weight: 600;
+}
+
+
+@keyframes fadeIn {
+from { opacity: 0; transform: scale(0.95); }
+to { opacity: 1; transform: scale(1); }
+}

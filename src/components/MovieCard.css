@@ -1,0 +1,37 @@
+
+
+/* MovieCard.css */
+.movie-card {
+position: relative;
+cursor: pointer;
+transition: transform 0.3s;
+width: 200px;
+}
+.movie-card:hover {
+transform: scale(1.1);
+z-index: 10;
+}
+.movie-card-image img {
+border-radius: 5px;
+display: block;
+
+width: 300px;
+height: 300px;
+}
+.movie-card-overlay {
+position: absolute;
+bottom: 0;
+width: 100%;
+background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
+color: #fff;
+padding: 0.5rem;
+}
+.movie-card-info h6 {
+font-size: 0.9rem;
+margin: 0;
+}
+.movie-card-info p {
+font-size: 0.75rem;
+margin: 0;
+opacity: 0.85;
+}

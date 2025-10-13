@@ -1,0 +1,32 @@
+
+
+/* Hero.css */
+.hero-section {
+position: relative;
+height: 500px;
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: flex-end;
+padding: 2rem;
+}
+.hero-overlay {
+position: absolute;
+inset: 0;
+background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
+}
+.hero-content {
+position: relative;
+max-width: 700px;
+}
+.hero-title {
+font-size: 3rem;
+font-weight: bold;
+}
+.hero-overview {
+font-size: 1rem;
+margin: 1rem 0;
+}
+.hero-buttons .btn {
+font-weight: 600;
+}

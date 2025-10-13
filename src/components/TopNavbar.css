@@ -1,0 +1,12 @@
+/* TopNavbar.css */
+.nav-black {
+background-color: #111 !important;
+transition: background-color 0.3s ease;
+}
+.navbar .nav-link {
+font-weight: 500;
+transition: color 0.2s ease;
+}
+.navbar .nav-link:hover {
+color: #e50914;
+}

@@ -1,0 +1,50 @@
+/* App.css */
+
+/* Main layout */
+.app {
+  background-color: #111;
+  color: #fff;
+  min-height: 100vh;
+  padding-top: 70px; /* height of fixed navbar */
+}
+
+.container-fluid {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Buttons */
+.btn-light {
+  background-color: #fff;
+  color: #111;
+  border: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+.btn-light:hover {
+  background-color: #e6e6e6;
+}
+
+.btn-outline-light {
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #111;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+/* Movie row scrollbar hidden */
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+.movie-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
