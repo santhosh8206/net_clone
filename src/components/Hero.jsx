@@ -1,28 +1,49 @@
 import React from 'react';
-// import './Hero.css';
+import { Carousel } from 'react-bootstrap';
+import './Hero.css';
 
-export default function Hero({ movie }) {
-  if (!movie) return null;
+export default function Hero({ movies = [] }) {
+  if (!movies || movies.length === 0) {
+    return null; // Prevent rendering if no movies yet
+  }
 
   return (
-    <header
-      className="hero-section text-light"
-      style={{ backgroundImage: `url(${movie.backdrop})` }}
-    >
-      <div className="hero-overlay">
-        <div className="hero-content container">
-          <h1 className="hero-title">{movie.title}</h1>
-          <p className="hero-overview">{movie.overview}</p>
-          <div className="hero-buttons">
-            <button className="btn btn-light btn-lg me-3">
-              <i className="bi bi-play-fill"></i> Play
-            </button>
-            <button className="btn btn-secondary btn-lg">
-              <i className="bi bi-info-circle"></i> More Info
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
+    <section className="hero-section">
+      <Carousel
+        fade
+        controls={false}
+        indicators={false}
+        pause={false}
+        interval={4000}
+        className="hero-carousel"
+      >
+        {movies.slice(0, 5).map((movie) => (
+          <Carousel.Item key={movie.id}>
+            <div className="hero-slide">
+              <img
+                className="hero-image d-block w-100"
+                src={movie.poster_path || movie.backdrop_path}
+                alt={movie.title || movie.tamilTitle}
+              />
+              <div className="hero-overlay" />
+              <div className="hero-content">
+                <h1 className="hero-title">{movie.title || movie.tamilTitle}</h1>
+                {movie.overview && (
+                  <p className="hero-description">{movie.overview.slice(0, 150)}...</p>
+                )}
+                <div className="hero-buttons">
+                  <button className="btn btn-light me-2">
+                    ▶ Play
+                  </button>
+                  <button className="btn btn-secondary">
+                    ℹ More Info
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </section>
   );
 }

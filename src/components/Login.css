@@ -1,0 +1,32 @@
+/* Login.css */
+
+.login-container {
+  height: 100vh;
+  background: url('https://assets.nflxext.com/ffe/siteui/vlv3/9e0e6f9e-5bcf-4e2f-84f7-39e04e81b5d3/5c9aa5aa-257d-46ec-a95d-cbd85d105f87/IN-en-20231009-popsignuptwoweeks-perspective_alpha_website_small.jpg') no-repeat center center/cover;
+}
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border-radius: 8px;
+  width: 350px;
+}
+
+.login-form input {
+  background-color: #333;
+  border: none;
+  color: #fff;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
+}
+
+.login-form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.login-form a:hover {
+  color: #e50914;
+}

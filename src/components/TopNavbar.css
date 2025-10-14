@@ -1,12 +1,50 @@
-/* TopNavbar.css */
-.nav-black {
-background-color: #111 !important;
-transition: background-color 0.3s ease;
+.top-navbar {
+  background-color: #141414 !important;
+  padding: 0.6rem 1rem;
+  z-index: 999;
 }
-.navbar .nav-link {
-font-weight: 500;
-transition: color 0.2s ease;
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
 }
-.navbar .nav-link:hover {
-color: #e50914;
+
+.nav-link {
+  color: #b3b3b3 !important;
+  margin-right: 10px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.search-box {
+  background-color: #333;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
+
+.search-box::placeholder {
+  color: #aaa;
+}
+
+.search-box:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #444;
+  color: #fff;
+}
+
+button.btn-outline-light {
+  border-color: #fff;
+  color: #fff;
+}
+
+button.btn-outline-light:hover {
+  background-color: #e50914;
+  border-color: #e50914;
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import MovieCard from './MovieCard';
 import './MovieRow.css';
 
-export default function MovieRow({ title, movies , onSelect }) {
-    
+export default function MovieRow({ title, movies =[] , onSelect }) {
+   if(!movies.length) return null;
   return (
     <section className="movie-row-section">
       <h4 className="text-light mb-3 px-3">{title}</h4>

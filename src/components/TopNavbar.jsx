@@ -1,64 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar, Container, Nav, Form, FormControl } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import { Navbar, Container, Nav, Form, Button } from 'react-bootstrap';
 import './TopNavbar.css';
 
-export default function TopNavbar() {
-  const [show, setShow] = useState(false);
+export default function TopNavbar({ onSearch, onLoginClick }) {
+  const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    onSearch(value); // Call search function from parent
+  };
 
   return (
     <Navbar
-      expand="lg"
+      bg="dark"
       variant="dark"
-      className={`fixed-top ${show ? 'nav-black' : ''}`}
+      expand="lg"
+      sticky="top"
+      className="top-navbar shadow-sm"
     >
-      <Container fluid className="d-flex align-items-center justify-content-between px-4">
-        {/* Left Section */}
-        <Navbar.Brand href="#" className="d-flex align-items-center">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="Netflix Logo"
-            height="28"
-            className="me-3"
-          />
-          <Nav className="d-none d-md-flex">
+      <Container fluid>
+        {/* Netflix Logo */}
+        <Navbar.Brand href="#" className="text-danger fw-bold fs-3">
+          NETFLIX
+        </Navbar.Brand>
+
+        {/* Collapsible Menu */}
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="me-auto">
             <Nav.Link href="#" className="text-light">Home</Nav.Link>
             <Nav.Link href="#" className="text-light">TV Shows</Nav.Link>
             <Nav.Link href="#" className="text-light">Movies</Nav.Link>
             <Nav.Link href="#" className="text-light">New & Popular</Nav.Link>
             <Nav.Link href="#" className="text-light">My List</Nav.Link>
           </Nav>
-        </Navbar.Brand>
 
-        {/* Right Section */}
-        <div className="d-flex align-items-center">
-          <Form className="d-none d-md-block me-3">
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="bg-dark text-light border-0"
-              style={{ width: '160px' }}
+          {/* Search Input */}
+          <Form className="d-flex me-3">
+            <Form.Control
+              type="search"
+              placeholder="Search (English / Tamil)"
+              className="me-2 search-box"
+              aria-label="Search"
+              value={query}
+              onChange={handleInputChange}
             />
           </Form>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-            alt="User Avatar"
-            height="32"
-            className="rounded-circle"
-          />
-        </div>
+
+          {/* Login/Logout Button */}
+          <Button variant="outline-light" size="sm" onClick={onLoginClick}>
+            Logout
+          </Button>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
