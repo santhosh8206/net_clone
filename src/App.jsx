@@ -57,6 +57,10 @@ export default function App() {
     setFilteredMovies(filtered);
   };
 
+  
+  // 🌀 Shuffle movies for each section
+  
+
   // Show Login if not logged in
   if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
 
@@ -67,18 +71,20 @@ export default function App() {
         onLoginClick={() => setIsLoggedIn(false)}
         onSearch={handleSearch}
       />
-
+       
       {/* Routes */}
       <Routes>
+        
         {/* Home Page */}
         <Route
           path="/"
           element={
-            <Home
+           <Home
               trending={filteredMovies.length > 0 ? filteredMovies : trending}
               topRated={topRated}
               action={action}
             />
+
           }
         />
 

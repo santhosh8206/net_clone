@@ -1,15 +1,15 @@
 /* src/components/Hero.css */
-.hero {
-  height: 360px;
-  display: flex;
-  align-items: flex-end;
-  border-radius: 12px;
-  position: relative;
+.hero-carousel {
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.hero-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-  width: 100%;
-  padding: 20px;
+.hero-slide h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.hero-slide p {
+  font-size: 1rem;
+  max-width: 600px;
 }
