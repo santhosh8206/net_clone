@@ -31,3 +31,6 @@ img {
   background: #e50914;
   color: #fff;
 }
+body { background: #000; }
+.container-fluid h3 { color: #fff; margin-top: 12px; }
+.ratio iframe { border: none; }

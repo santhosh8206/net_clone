@@ -1,44 +1,16 @@
-/* Movies.css */
-
-/* General movie section styling */
-.movies-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem 0;
+/* src/components/MovieRow.css */
+.movie-row-scroll {
+  gap: 12px;
 }
 
-.movie-item {
-  width: 150px;
-  cursor: pointer;
-  transition: transform 0.3s;
+/* hide default scrollbars in many browsers */
+.movie-row-scroll::-webkit-scrollbar {
+  height: 8px;
 }
-.movie-item:hover {
-  transform: scale(1.1);
-  z-index: 10;
-}
-
-.movie-item img {
-  width: 100%;
-  border-radius: 6px;
+.movie-row-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
 }
 
-.movie-title {
-  font-size: 0.9rem;
-  margin-top: 0.3rem;
-  text-align: center;
-  color: #fff;
-}
-
-/* Horizontal scroll for rows */
-.movies-row {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  scroll-behavior: smooth;
-}
-.movies-row::-webkit-scrollbar {
-  display: none;
-}
+/* optional: hide completely */
+/* .movie-row-scroll::-webkit-scrollbar { display: none; } */

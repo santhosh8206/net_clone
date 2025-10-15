@@ -1,49 +1,28 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
-import './Hero.css';
+// src/components/Hero.jsx
+import React from "react";
 
 export default function Hero({ movies = [] }) {
-  if (!movies || movies.length === 0) {
-    return null; // Prevent rendering if no movies yet
-  }
+  const featured = movies[0];
+  if (!featured) return null;
+
+  const imageBase = "https://image.tmdb.org/t/p/original";
+  const bg = featured.backdrop_path ? `${imageBase}${featured.backdrop_path}` : null;
 
   return (
-    <section className="hero-section">
-      <Carousel
-        fade
-        controls={false}
-        indicators={false}
-        pause={false}
-        interval={4000}
-        className="hero-carousel"
-      >
-        {movies.slice(0, 5).map((movie) => (
-          <Carousel.Item key={movie.id}>
-            <div className="hero-slide">
-              <img
-                className="hero-image d-block w-100"
-                src={movie.poster_path || movie.backdrop_path}
-                alt={movie.title || movie.tamilTitle}
-              />
-              <div className="hero-overlay" />
-              <div className="hero-content">
-                <h1 className="hero-title">{movie.title || movie.tamilTitle}</h1>
-                {movie.overview && (
-                  <p className="hero-description">{movie.overview.slice(0, 150)}...</p>
-                )}
-                <div className="hero-buttons">
-                  <button className="btn btn-light me-2">
-                    ▶ Play
-                  </button>
-                  <button className="btn btn-secondary">
-                    ℹ More Info
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </section>
+    <header
+      className="hero p-5 rounded mb-4"
+      style={{
+        backgroundImage: bg ? `url(${bg})` : undefined,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div style={{ background: "linear-gradient(90deg, rgba(0,0,0,0.7), transparent)" }} className="p-4 rounded">
+        <h1 className="text-white">{featured.title || featured.name}</h1>
+        <p className="text-muted" style={{ maxWidth: 800 }}>
+          {featured.overview}
+        </p>
+      </div>
+    </header>
   );
 }

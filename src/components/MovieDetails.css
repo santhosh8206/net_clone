@@ -1,0 +1,9 @@
+/* src/components/MovieDetails.css */
+.movie-backdrop {
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh;
+}
+.movie-details-inner {
+  color: #fff;
+}

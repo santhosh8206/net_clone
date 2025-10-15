@@ -48,3 +48,17 @@ h4 {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* src/App.css */
+.app {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* bootstrap overrides / spacing tweaks */
+.hero {
+  height: 320px;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 12px;
+  overflow: hidden;
+  color: white;
+}

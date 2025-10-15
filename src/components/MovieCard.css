@@ -1,37 +1,18 @@
-
-
-/* MovieCard.css */
 .movie-card {
-position: relative;
-cursor: pointer;
-transition: transform 0.3s;
-width: 200px;
+  width: 180px;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 .movie-card:hover {
-transform: scale(1.1);
-z-index: 10;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
 }
-.movie-card-image img {
-border-radius: 5px;
-display: block;
-
-width: 300px;
-height: 300px;
+.movie-card img {
+  height: 270px;
+  object-fit: cover;
 }
-.movie-card-overlay {
-position: absolute;
-bottom: 0;
-width: 100%;
-background: linear-gradient(180deg, transparent, rgba(0,0,0,0.8));
-color: #fff;
-padding: 0.5rem;
-}
-.movie-card-info h6 {
-font-size: 0.9rem;
-margin: 0;
-}
-.movie-card-info p {
-font-size: 0.75rem;
-margin: 0;
-opacity: 0.85;
+.movie-card-meta {
+  padding: 8px 2px;
 }

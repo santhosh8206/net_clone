@@ -1,34 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import TopNavbar from './components/TopNavbar';
-import Login from './components/Login';
-import Hero from './components/Hero';
-import MovieRow from './components/MovieRow';
-import MovieModal from './components/MovieModal';
-import { getMovies } from './services/api';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import TopNavbar from "./components/TopNavbar";
+import MovieDetails from "./components/MovieDetails";
+import Login from "./components/Login";
+import Home from "./pages/Home";
+import WatchPage from "./pages/WatchPage";
+import {
+  getMovies,
+  getTopRated,
+  getMoviesByGenre,
+} from "./services/api";
 
 export default function App() {
-  const [movies, setMovies] = useState([]);
+  const [trending, setTrending] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [action, setAction] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const navigate = useNavigate();
+
+  // Fetch movies from API / demo dataset
   useEffect(() => {
-    getMovies()
-      .then((data) => {
-        setMovies(data);
-        setFilteredMovies(data);
-      })
-      .catch((err) => console.error('Error fetching movies:', err));
+    const fetchAllMovies = async () => {
+      try {
+        const [pop, top, act] = await Promise.all([
+          getMovies(),
+          getTopRated(),
+          getMoviesByGenre(28), // action genre
+        ]);
+        setTrending(pop);
+        setTopRated(top);
+        setAction(act);
+        setFilteredMovies(pop); // default search list
+        console.log("✅ Trending:", pop);
+        console.log("✅ Top Rated:", top);
+        console.log("✅ Action:", act);
+      } catch (err) {
+        console.error("Error loading movies:", err);
+      }
+    };
+    fetchAllMovies();
   }, []);
 
+  // Search handler
   const handleSearch = (query) => {
     if (!query) {
-      setFilteredMovies(movies);
+      setFilteredMovies(trending);
       return;
     }
-    const filtered = movies.filter(
+    const filtered = trending.filter(
       (movie) =>
         movie.title?.toLowerCase().includes(query.toLowerCase()) ||
         movie.tamilTitle?.toLowerCase().includes(query.toLowerCase())
@@ -36,23 +57,37 @@ export default function App() {
     setFilteredMovies(filtered);
   };
 
-  if (!isLoggedIn) {
-    return <Login onLogin={() => setIsLoggedIn(true)} />;
-  }
+  // Show Login if not logged in
+  if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
 
   return (
-    <div className="app bg-dark min-vh-100">
-      <TopNavbar onLoginClick={() => setIsLoggedIn(false)} onSearch={handleSearch} />
-     {filteredMovies.length > 0 && <Hero movies={filteredMovies} />}
+    <div className="app bg-dark min-vh-100 text-white">
+      {/* Navbar */}
+      <TopNavbar
+        onLoginClick={() => setIsLoggedIn(false)}
+        onSearch={handleSearch}
+      />
 
+      {/* Routes */}
+      <Routes>
+        {/* Home Page */}
+        <Route
+          path="/"
+          element={
+            <Home
+              trending={filteredMovies.length > 0 ? filteredMovies : trending}
+              topRated={topRated}
+              action={action}
+            />
+          }
+        />
 
-      <div className="container-fluid mt-4">
-        <MovieRow title="Trending Now" movies={filteredMovies} onSelect={setSelectedMovie} />
-        <MovieRow title="Top Picks For You" movies={filteredMovies} onSelect={setSelectedMovie} />
-        <MovieRow title="New Releases" movies={filteredMovies} onSelect={setSelectedMovie} />
-      </div>
+        {/* Movie Details Page */}
+        <Route path="/movie/:id" element={<MovieDetails />} />
 
-      {selectedMovie && <MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />}
+        {/* Watch Page (VidSrc or player) */}
+        <Route path="/watch/movie/:id" element={<WatchPage />} />
+      </Routes>
     </div>
   );
 }

@@ -1,8 +1,20 @@
 {
   "name": "netflix",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "homepage": "https://github.com/santhosh8206/net_clone#readme",
+  "bugs": {
+    "url": "https://github.com/santhosh8206/net_clone/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santhosh8206/net_clone.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,9 +24,13 @@
   "dependencies": {
     "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.545.0",
+    "node": "^24.10.0",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
